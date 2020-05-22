@@ -3,12 +3,11 @@ package main
 import (
 	"fmt"
 
-	pb "./proto"
-
-	//pb "github.com/dmitry-msk777/CRM_Test/proto"
 	"context"
 	"net"
 	"reflect"
+
+	pb "github.com/dmitry-msk777/gRPC_example/proto"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"

@@ -11,7 +11,7 @@ import (
 	"log"
 	"time"
 
-	pb "../proto"
+	pb "github.com/dmitry-msk777/gRPC_example/proto"
 )
 
 func TestRPCClient(t *testing.T) {
