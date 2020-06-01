@@ -7,6 +7,12 @@ RUN go get "google.golang.org/grpc/grpclog"
 
 RUN go install github.com/dmitry-msk777/gRPC_example
 
-ENTRYPOINT ["/go/bin/dmitry777"]
+ENTRYPOINT /go/bin/gRPC_example
 
-EXPOSE 18181:18184
+EXPOSE 5300:5300
+
+# https://temofeev.ru/info/articles/kak-sozdat-prostoy-mikroservis-na-golang-i-grpc-i-vypolnit-ego-konteynerizatsiyu-s-pomoshchyu-docker/
+# https://habr.com/ru/post/238473/
+
+# docker build -t grpc_example .
+# docker run --publish 18184:5300 --name test --rm grpc_example
