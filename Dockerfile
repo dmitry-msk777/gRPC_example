@@ -16,3 +16,6 @@ EXPOSE 5300:5300
 
 # docker build -t grpc_example .
 # docker run --publish 18184:5300 --name test --rm grpc_example
+
+# https://hub.docker.com/repository/docker/dmitrymsk777/megaparsec_300/builds
+# docker run dmitrymsk777/megaparsec_300
