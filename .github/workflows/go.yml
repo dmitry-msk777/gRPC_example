@@ -36,8 +36,8 @@ jobs:
     - name: Build
       run: go build -v ./...
 
-    - name: Test
-      run: go test -v ./...
+   # - name: Test
+   #   run: go test -v ./...
 
 # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
