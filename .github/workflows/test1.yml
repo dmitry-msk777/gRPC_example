@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Login to GitHub Container Registry1
+        name: Login to GitHub Container Registry3
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
