@@ -33,4 +33,4 @@ jobs:
           password: ${{ secrets.GITLAB_PASSWORD }}
           
       - name: Push image to gitlab
-        run: docker push registry.gitlab.com/dmitry-msk777/go_my_test_development
+        run: docker push registry.gitlab.com/${{ secrets.GITLAB_USERNAME }}/go_my_test_development
