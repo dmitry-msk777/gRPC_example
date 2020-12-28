@@ -28,8 +28,8 @@ jobs:
           username: ${{ secrets.GITLAB_USERNAME }}
           password: ${{ secrets.GITLAB_PASSWORD }}
           
-      #- name: Tag image to gitlab
-      #  run: docker tag Latest registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
+      - name: Tag image to gitlab
+        run: docker tag latest registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
         
       - name: Push image to gitlab
         run: docker push registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
