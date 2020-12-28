@@ -9,16 +9,15 @@ env:
   IMAGE_NAME: gprc_example
 
 jobs:
-  # login:
-  #   runs-on: ubuntu-latest
-   #  steps:
-  #     -
-   #      name: Login to GitHub Container Registry4
-   #      uses: docker/login-action@v1
-   #      with:
-   #        registry: ghcr.io
-   #        username: ${{ github.repository_owner }}
-   #        password: ${{ secrets.CR_PAT }}
+   login:
+     runs-on: ubuntu-latest
+     steps:
+         name: Login to GitHub Container Registry4
+         uses: docker/login-action@v1
+         with:
+           registry: ghcr.io
+            username: ${{ github.repository_owner }}
+            password: ${{ secrets.CR_PAT }}
 
 # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
@@ -35,14 +34,8 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
 
-      - name: Log into registry
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-       #- name: Login to GitHub Container Registry4
-       #  uses: docker/login-action@v1
-       #  with:
-       #   registry: ghcr.io
-       #    username: ${{ github.repository_owner }}
-        #   password: ${{ secrets.CR_PAT }}
+      #- name: Log into registry
+      #  run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image
         run: |
