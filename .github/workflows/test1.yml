@@ -4,6 +4,10 @@ on:
   push:
     branches: master
 
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: gprc_example
+
 jobs:
   # login:
   #   runs-on: ubuntu-latest
