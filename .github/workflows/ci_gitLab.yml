@@ -21,7 +21,7 @@ jobs:
       - name: Build image
         run: docker build . --file Dockerfile --tag latest
 
-      - name: Login to GitHub Container Registry
+      - name: Login to GitLab Container Registry
         uses: docker/login-action@v1
         with:
           registry: registry.gitlab.com
@@ -45,7 +45,7 @@ jobs:
 
       - name: Push image GitHub
         run: |
-          IMAGE_NAME="go_my_test_development"
+          IMAGE_NAME="gprc_example"
           IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
