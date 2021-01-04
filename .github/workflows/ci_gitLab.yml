@@ -4,6 +4,10 @@ on:
   push:
     branches: master
 
+env:
+  ## Удалить тест двойнового паша...
+  IMAGE_NAME: gprc_example
+
 jobs:
 
 # Push image to GitHub Packages..
@@ -45,7 +49,6 @@ jobs:
 
       - name: Push image GitHub
         run: |
-          IMAGE_NAME=gprc_example
           IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
