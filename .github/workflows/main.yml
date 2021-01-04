@@ -1,4 +1,4 @@
-name: ci_2
+name: delete1
 
 on:
   push:
