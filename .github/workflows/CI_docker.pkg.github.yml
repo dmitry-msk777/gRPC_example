@@ -1,4 +1,4 @@
-name: Docker
+name: CI_docker.pkg.github.com
 
 on:
   push:
