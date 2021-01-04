@@ -45,7 +45,7 @@ jobs:
 
       - name: Push image GitHub
         run: |
-          IMAGE_NAME="gprc_example"
+          IMAGE_NAME=gprc_example
           IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
