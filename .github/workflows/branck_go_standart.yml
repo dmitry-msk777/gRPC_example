@@ -1,4 +1,4 @@
-name: Go
+name: Branch_Go
 
 on:
   push:
