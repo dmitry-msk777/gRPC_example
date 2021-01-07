@@ -35,7 +35,11 @@ jobs:
 
     - name: Build
       #run: go build -v ./...
-      GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=ggg'" -o $IMAGE_NAME-linux64
+      run: |
+        GOOS=linux
+        GOARCH=amd64
+        CGO_GOARCH=amd64ENABLED=0
+        go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=ggg'" -o $IMAGE_NAME-linux64
 
    # - name: Test
    #   run: go test -v ./...
