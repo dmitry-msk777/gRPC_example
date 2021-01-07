@@ -40,10 +40,27 @@ jobs:
         GOARCH=amd64
         CGO_GOARCH=amd64ENABLED=0
         go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=ggg'" -o $IMAGE_NAME-linux64
+      
+    - name: Build image
+      run: docker build . --file Dockerfile --tag latest
+
+    - name: Login to GitLab Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: registry.gitlab.com
+        username: ${{ secrets.GITLAB_USERNAME }}
+        password: ${{ secrets.GITLAB_PASSWORD }}
+    
+    - name: Tag image to gitlab
+      run: docker tag latest registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
+      
+    - name: Push image to gitlab
+      run: docker push registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
 
    # - name: Test
    #   run: go test -v ./...
-
+     
+     
 # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
   push:
