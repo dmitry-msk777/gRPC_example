@@ -2,9 +2,9 @@ name: Go
 
 on:
   push:
-    branches: [ master ]
+    branches: [ test_CD_CI ]
   pull_request:
-    branches: [ master ]
+    branches: [ test_CD_CI ]
 
 env:
   # TODO: Change variable to your image's name
