@@ -9,9 +9,13 @@ import (
 
 	pb "github.com/dmitry-msk777/gRPC_example/proto"
 
+	versionbuild "gRPC_example/versionbuild"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 )
+
+var Version = "none"
 
 type Customer_struct struct {
 	Customer_id    string
@@ -101,12 +105,13 @@ func main() {
 		grpclog.Fatalf("failed to listen: %v", err)
 	}
 
+	fmt.Println("Version build: ", versionbuild.HashCommit)
+	fmt.Println("Version build main: ", Version)
+
 	opts := []grpc.ServerOption{}
 	grpcServer := grpc.NewServer(opts...)
 
 	pb.RegisterCRMswapServer(grpcServer, &server{})
 	grpcServer.Serve(listener)
-
-	fmt.Println("123")
 
 }

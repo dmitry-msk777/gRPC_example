@@ -23,7 +23,7 @@ func main() {
 	defer cancel()
 
 	S := &pb.S{
-		CustomerId:    "123007_del",
+		CustomerId:    "123007_delete_this_postfix",
 		CustomerName:  "Alex gRPC",
 		CustomerType:  "Google",
 		CustomerEmail: "gRPC@mail.ru",
@@ -48,7 +48,7 @@ func main() {
 	if err != nil {
 		log.Println("something went wrong", err)
 	}
-	log.Println(rply2)
+	log.Println("rply2: ", rply2.Response)
 
 	//If
 	// message SF {
