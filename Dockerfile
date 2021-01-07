@@ -1,21 +1,9 @@
-FROM golang:1.13.5
+FROM alpine:3.9 as builder
+RUN apk update && apk add ca-certificates tzdata
 
-ADD . /go/src/github.com/dmitry-msk777/gRPC_example
-
-RUN go get "google.golang.org/grpc"
-RUN go get "google.golang.org/grpc/grpclog"
-
-RUN go install github.com/dmitry-msk777/gRPC_example
-
-ENTRYPOINT /go/bin/gRPC_example
-
-EXPOSE 5300:5300
-
-# https://temofeev.ru/info/articles/kak-sozdat-prostoy-mikroservis-na-golang-i-grpc-i-vypolnit-ego-konteynerizatsiyu-s-pomoshchyu-docker/
-# https://habr.com/ru/post/238473/
-
-# docker build -t grpc_example .
-# docker run --publish 18184:5300 --name test --rm grpc_example
-
-# https://hub.docker.com/repository/docker/dmitrymsk777/megaparsec_300/builds
-# docker run dmitrymsk777/megaparsec_300
+FROM scratch
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
+COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo/
+COPY go-keeper-linux64 go-keeper-linux64
+EXPOSE 8080
+CMD ["./go-keeper-linux64"]
