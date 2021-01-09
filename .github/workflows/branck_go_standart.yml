@@ -40,7 +40,7 @@ jobs:
         echo ${GITHUB_SHA}
         GOARCH=amd64
         CGO_GOARCH=amd64ENABLED=0
-        go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=ggg'" -o $IMAGE_NAME-linux64
+        go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=${GITHUB_SHA}'" -o $IMAGE_NAME-linux64
       
     - name: Build image
       run: docker build . --file Dockerfile --tag latest
