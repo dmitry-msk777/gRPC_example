@@ -37,9 +37,7 @@ jobs:
       #run: go build -v ./...
       run: |
         GOOS=linux
-        echo "${{ secrets.GITHUB_TOKEN }}"
-        echo "${{ secrets.GITLAB_USERNAME }}"
-        echo "${{ secrets.GITLAB_PASSWORD }}"
+        echo "${{ GOOS }}"
         GOARCH=amd64
         CGO_GOARCH=amd64ENABLED=0
         go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=ggg'" -o $IMAGE_NAME-linux64

@@ -36,7 +36,7 @@ func (s *server) A(ctx context.Context, in *pb.SF) (*pb.Response, error) {
 
 	var mapCheck = make(map[string]string)
 
-	for i777 := 0; i < num; i++ {
+	for i := 0; i < num; i++ {
 		field := fields.Field(i)
 		value := values.Field(i)
 		mapCheck[field.Name] = value.String()
