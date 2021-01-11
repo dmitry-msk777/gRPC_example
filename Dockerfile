@@ -6,4 +6,4 @@ COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo/
 COPY gprc_example-linux64 gprc_example-linux64
 EXPOSE 8080
-CMD ["./go-keeper-linux64"]
+CMD ["./gprc_example-linux64"]
