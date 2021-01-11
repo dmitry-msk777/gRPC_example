@@ -7,5 +7,5 @@ FROM scratch
 #COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo/
 COPY gprc_example-linux64 gprc_example-linux64
 EXPOSE 5300:5300
-#CMD ["./gprc_example-linux64"]
-ENTRYPOINT [ "./gprc_example-linux64" ]
+CMD ["./gprc_example-linux64"]
+#ENTRYPOINT [ "./gprc_example-linux64" ]
