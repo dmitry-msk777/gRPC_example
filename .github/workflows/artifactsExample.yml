@@ -39,6 +39,9 @@ jobs:
   use-artifacts:
     runs-on: ubuntu-latest
     steps:
+      
+      - name: Step 1 - Create a temporary artifact downloads folder
+        run: mkdir downloads
     
       - name: Download math result for job 1
         uses: actions/download-artifact@v2
