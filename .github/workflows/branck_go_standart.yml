@@ -133,4 +133,4 @@ jobs:
           # docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker tag test_cd_ci $IMAGE_ID:test_cd_ci
           # docker push $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:$test_cd_ci
+          docker push $IMAGE_ID:test_cd_ci
