@@ -91,7 +91,7 @@ jobs:
         uses: actions/download-artifact@v2
         with: 
           name: homework
-          path: ${IMAGE_NAME}-linux64
+          #path: ${IMAGE_NAME}-linux64
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
