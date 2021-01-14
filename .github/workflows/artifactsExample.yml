@@ -23,11 +23,18 @@ jobs:
           echo 'charlie'  > charlie.html
           cd ..
     
+      #- name: Step 3 - Use the Upload Artifact GitHub Action
+      #  uses: actions/upload-artifact@v2
+      #  with: 
+       #   name: assets-for-download
+      #    path: downloads
+      
       - name: Step 3 - Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
         with: 
           name: assets-for-download
           path: downloads
+        
           
   use-artifacts:
     runs-on: ubuntu-latest
@@ -37,7 +44,6 @@ jobs:
         uses: actions/download-artifact@v2
         with: 
           name: assets-for-download
-          path: downloads
         
       - name: Print the final result
         shell: bash
