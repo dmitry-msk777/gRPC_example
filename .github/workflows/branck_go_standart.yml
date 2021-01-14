@@ -117,7 +117,7 @@ jobs:
           password: ${{ secrets.CR_PAT }}
 
       - name: Tag image to gitlab
-        run: docker tag latest ghcr.io/dmitry-msk777/grpc_example:latest
+        run: docker tag latest ghcr.io/dmitry-msk777/grpc_example/grpc_example:latest
       
       - name: Push image to gitlab
-        run: docker push ghcr.io/dmitry-msk777/grpc_example:latest
+        run: docker push ghcr.io/dmitry-msk777/grpc_example/grpc_example:latest
