@@ -116,8 +116,8 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Tag image to gitlab
-        run: gprc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+      - name: docker tag image to gitlab
+        run: docker tag gprc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
       
       - name: Push image to gitlab
         run: docker push ghcr.io/dmitry-msk777/grpc_example/grpc_example:latest
