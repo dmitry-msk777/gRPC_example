@@ -62,14 +62,16 @@ jobs:
     - name: Push image to gitlab
       run: docker push registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
       
-   # - name: Step 1 - Create a temporary artifact downloads folder
-   #   run: mkdir downloads
+    - name: Step 1 - Create a temporary artifact downloads folder
+      run: |
+        mkdir imageDoker
+        copy ${IMAGE_NAME}-linux64 imageDoker
       
     - name: Step 3 - Use the Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with: 
-        name: homework
-        path: ${IMAGE_NAME}-linux64
+        name: imageDoker-art
+        path: imageDoker
 
    # - name: Test
    #   run: go test -v ./...
@@ -86,12 +88,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Step 1 - Create a temporary artifact downloads folder
+        run: mkdir imageDoker
 
       - name: Download math result for job 1
         uses: actions/download-artifact@v2
         with: 
-          name: homework
-          #path: ${IMAGE_NAME}-linux64
+          name: imageDoker-art
+          path: imageDoker
+          
+      - name: Step 1 - Create a temporary artifact downloads folder
+        run: |
+          cd imageDoker
+          ls
+          # mkdir imageDoker
+          # copy ${IMAGE_NAME}-linux64 imageDoker  
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
