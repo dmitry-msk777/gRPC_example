@@ -116,21 +116,8 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Push image
-        run: |
-          IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
-          # Change all uppercase to lowercase
-          IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          # Use Docker `latest` tag convention
-          # [ "$VERSION" == "master" ] && VERSION=latest
-          [ "$VERSION" == "test_CD_CI" ] && VERSION=test_CD_CI
-          echo IMAGE_ID=$IMAGE_ID
-          echo VERSION=$VERSION
-          # docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker tag test_cd_ci $IMAGE_ID:test_cd_ci
-          # docker push $IMAGE_ID:$VERSION
-          docker push $IMAGE_ID:test_cd_ci
+      - name: Tag image to gitlab
+        run: docker tag test_cd_ci ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_cd_ci
+      
+      - name: Push image to gitlab
+        run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_cd_ci
