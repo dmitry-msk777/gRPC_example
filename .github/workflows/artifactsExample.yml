@@ -48,5 +48,6 @@ jobs:
       - name: Print the final result
         shell: bash
         run: |
-          value=`cat downloads/alpha.html`
+          # value=`cat downloads/alpha.html`
+          value=`cat alpha.html`
           echo The result is $value    
