@@ -43,7 +43,8 @@ jobs:
       - name: Download math result for job 1
         uses: actions/download-artifact@v2
         with: 
-          path: ./
+          # path: ./
+          path: downloads
         
       - name: Print the final result
         shell: bash
