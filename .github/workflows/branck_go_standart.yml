@@ -131,5 +131,5 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
           # docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker tag test_CD_CI $IMAGE_ID:test_CD_CI
+          docker tag test_cd_ci $IMAGE_ID:test_cd_ci
           docker push $IMAGE_ID:$VERSION
