@@ -110,6 +110,7 @@ jobs:
           # cp ${IMAGE_NAME}-linux64 imageDoker
           
       - name: Build image
+        # run: docker build . --file Dockerfile --tag grpc_example
         run: docker build . --file Dockerfile --tag grpc_example
 
       - name: Login to GitHub Container Registry
@@ -120,7 +121,9 @@ jobs:
           password: ${{ secrets.CR_PAT }}
 
       - name: docker tag image to gitlab
-        run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+        # run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+        run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_tag
       
       - name: Push image to gitlab
-        run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+        # run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+        run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_tag
