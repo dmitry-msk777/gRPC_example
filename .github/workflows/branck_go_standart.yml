@@ -123,4 +123,4 @@ jobs:
         run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
       
       - name: Push image to gitlab
-        run: docker push ghcr.io/dmitry-msk777/grpc_example/grpc_example:latest
+        run: docker push ghcr.io/dmitry-msk777/grpc_example:latest
