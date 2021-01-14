@@ -130,6 +130,6 @@ jobs:
           [ "$VERSION" == "test_CD_CI" ] && VERSION=test_CD_CI
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
-          #docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-          docker tag $IMAGE_ID:$VERSION
+          # docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker tag test_CD_CI $IMAGE_ID:test_CD_CI
           docker push $IMAGE_ID:$VERSION
