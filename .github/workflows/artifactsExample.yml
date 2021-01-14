@@ -56,7 +56,8 @@ jobs:
           ls
           cd downloads
           ls
-          cd ./ 
+          cd ./
+          ls
           value=`cat downloads/alpha.html`
           # value=`cat alpha.html`
           echo The result is $value    
