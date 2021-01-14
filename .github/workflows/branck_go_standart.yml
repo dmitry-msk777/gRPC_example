@@ -104,8 +104,10 @@ jobs:
         run: |
           cd imageDoker
           ls
+          cd ..
+          cp imageDoker/${IMAGE_NAME}-linux64 ${IMAGE_NAME}-linux64
           # mkdir imageDoker
-          # copy ${IMAGE_NAME}-linux64 imageDoker  
+          # cp ${IMAGE_NAME}-linux64 imageDoker  
 
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
