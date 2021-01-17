@@ -56,8 +56,8 @@ jobs:
         GOARCH=amd64
         CGO_ENABLED=0
         # CGO_GOARCH=amd64ENABLED=0
-        # go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=${GITHUB_SHA}'" -o ${IMAGE_NAME}-linux64
-        go build -o ${IMAGE_NAME}-linux64
+        go build -v -ldflags="-X 'gRPC_example/versionbuild.HashCommit=${GITHUB_SHA}'" -o ${IMAGE_NAME}-linux64
+        # go build -o ${IMAGE_NAME}-linux64
         echo ${IMAGE_NAME}
         echo ${IMAGE_NAME}-linux64
         echo $GOOS
