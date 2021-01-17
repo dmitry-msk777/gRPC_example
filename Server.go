@@ -28,6 +28,8 @@ type server struct{}
 
 func (s *server) A(ctx context.Context, in *pb.SF) (*pb.Response, error) {
 
+	fmt.Println("in -------->")
+
 	structValue := *in.S
 	fields := reflect.TypeOf(structValue)
 	values := reflect.ValueOf(structValue)
@@ -75,6 +77,8 @@ func (s *server) A(ctx context.Context, in *pb.SF) (*pb.Response, error) {
 	response := &pb.Response{
 		Response: CheckSuccess,
 	}
+
+	fmt.Println("response:", response)
 
 	return response, nil
 }

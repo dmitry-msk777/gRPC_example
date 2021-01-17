@@ -23,7 +23,7 @@ func main() {
 	defer cancel()
 
 	S := &pb.S{
-		CustomerId:    "123007_delete_this_postfix",
+		CustomerId:    "123007", //"123007_delete_this_postfix",
 		CustomerName:  "Alex gRPC",
 		CustomerType:  "Google",
 		CustomerEmail: "gRPC@mail.ru",
