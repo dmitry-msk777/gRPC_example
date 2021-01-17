@@ -36,6 +36,8 @@ jobs:
     - name: Build
       #run: go build -v ./...
       run: |
+        echo GOOS
+        echo GOARCH
         GOOS=linux
         echo ${GITHUB_SHA}
         GOARCH=amd64
@@ -45,6 +47,8 @@ jobs:
         go build -o ${IMAGE_NAME}-linux64
         echo ${IMAGE_NAME}
         echo ${IMAGE_NAME}-linux64
+        echo GOOS
+        echo GOARCH
       
     - name: Build image
       run: docker build . --file Dockerfile --tag latest
