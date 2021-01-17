@@ -23,8 +23,8 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: ^1.13
-        goos: linux
-        goarch: amd64
+        #goos: linux
+        #goarch: amd64
       env:
         goos: linux
         goarch: amd64
@@ -41,6 +41,9 @@ jobs:
         fi
 
     - name: Build
+      env:
+        goos: linux
+        goarch: amd64
       #run: go build -v ./...
       run: |
         echo GOOS
