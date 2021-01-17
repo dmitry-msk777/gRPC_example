@@ -9,7 +9,7 @@ RUN go install github.com/dmitry-msk777/gRPC_example
 
 ENTRYPOINT /go/bin/gRPC_example
 
-RUN chmod +x entrypoint.sh
+#RUN chmod +x entrypoint.sh
 
 EXPOSE 5300:5300
 
