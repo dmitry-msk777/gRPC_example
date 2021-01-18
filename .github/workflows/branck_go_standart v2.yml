@@ -80,18 +80,18 @@ jobs:
       run: docker push registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
 
     - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.CR_PAT }}
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.CR_PAT }}
 
-      - name: docker tag image to github
-        run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+    - name: docker tag image to github
+      run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
         # run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_tag
       
-      - name: Push image to github
-        run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+    - name: Push image to github
+      run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
         # run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_tag
       
     - name: Step 1 - Create a temporary artifact downloads folder
