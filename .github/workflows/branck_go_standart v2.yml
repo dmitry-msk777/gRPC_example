@@ -1,4 +1,4 @@
-name: Branch_Go
+name: Branch_Go_v2
 
 on:
   push:
@@ -64,7 +64,7 @@ jobs:
         echo $GOARCH
       
     - name: Build image
-      run: docker build . --file Dockerfile --tag grpc_example
+      run: docker build . --file Dockerfile --tag latest
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1
@@ -74,12 +74,25 @@ jobs:
         password: ${{ secrets.CR_PAT }}
 
     - name: docker tag image to gitlab
-      run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
+      run: docker tag latest ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
         # run: docker tag grpc_example ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_tag
       
     - name: Push image to gitlab
       run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:latest
         # run: docker push ghcr.io/dmitry-msk777/grpc_example/gprc_example:test_tag
+        
+    - name: Login to GitLab Container Registry
+      uses: docker/login-action@v1
+      with:
+        registry: registry.gitlab.com
+        username: ${{ secrets.GITLAB_USERNAME }}
+        password: ${{ secrets.GITLAB_PASSWORD }}
+    
+    - name: Tag image to gitlab
+      run: docker tag latest registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
+      
+    - name: Push image to gitlab
+      run: docker push registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
       
     - name: Step 1 - Create a temporary artifact downloads folder
       run: |
@@ -96,51 +109,3 @@ jobs:
 
    # - name: Test
    #   run: go test -v ./...
-     
-     
-# Push image to GitHub Packages...
-  # See also https://docs.docker.com/docker-hub/builds/
-  push:
-    # Ensure test job passes before pushing image.
-    needs: build
-
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push'
-
-    steps:
-      - uses: actions/checkout@v2
-      
-      - name: Step 1 - Create a temporary artifact downloads folder
-        run: mkdir imageDoker
-
-      - name: Download math result for job 1
-        uses: actions/download-artifact@v2
-        with: 
-          name: imageDoker-art
-          path: imageDoker
-          
-      - name: Step 1 - Create a temporary artifact downloads folder
-        run: |
-          cd imageDoker
-          ls
-          cd ..
-          cp imageDoker/${IMAGE_NAME}-linux64 ${IMAGE_NAME}-linux64
-          # mkdir imageDoker
-          # cp ${IMAGE_NAME}-linux64 imageDoker
-          
-      - name: Build image
-        # run: docker build . --file Dockerfile --tag grpc_example
-        run: docker build . --file Dockerfile --tag latest
-
-      - name: Login to GitLab Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: registry.gitlab.com
-          username: ${{ secrets.GITLAB_USERNAME }}
-          password: ${{ secrets.GITLAB_PASSWORD }}
-    
-      - name: Tag image to gitlab
-        run: docker tag latest registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
-      
-      - name: Push image to gitlab
-        run: docker push registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
