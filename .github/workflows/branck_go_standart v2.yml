@@ -64,7 +64,7 @@ jobs:
         echo $GOARCH
       
     - name: Build image
-      run: docker build . --file Dockerfile --tag latest
+      run: docker build . --file Dockerfile --tag grpc_example
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v1
@@ -130,7 +130,7 @@ jobs:
           
       - name: Build image
         # run: docker build . --file Dockerfile --tag grpc_example
-        run: docker build . --file Dockerfile --tag grpc_example
+        run: docker build . --file Dockerfile --tag latest
 
       - name: Login to GitLab Container Registry
         uses: docker/login-action@v1
