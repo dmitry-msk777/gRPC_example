@@ -75,10 +75,10 @@ jobs:
     
     - name: Tag image to gitlab
       #run: docker tag latest registry.gitlab.com/dmitry-msk777/go_my_test_development:latest
-      run:  docker tag latest registry.gitlab.com/smartaccount/backend-stack/registriesimagestore/go_my_test_development:latest
+      run:  docker tag latest registry.gitlab.com/smartaccount/backend-stack/registriesimagestore/go_my_test_development2:latest
        
     - name: Push image to gitlab
-      run: docker push registry.gitlab.com/smartaccount/backend-stack/registriesimagestore/go_my_test_development:latest
+      run: docker push registry.gitlab.com/smartaccount/backend-stack/registriesimagestore/go_my_test_development2:latest
       
     - name: Step 1 - Create a temporary artifact downloads folder
       run: |
