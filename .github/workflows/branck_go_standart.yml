@@ -125,6 +125,7 @@ jobs:
           cp imageDoker/${IMAGE_NAME}-linux64 ${IMAGE_NAME}-linux64
           # mkdir imageDoker
           # cp ${IMAGE_NAME}-linux64 imageDoker
+          chmod +x ${IMAGE_NAME}-linux64
           
       - name: Build image
         # run: docker build . --file Dockerfile --tag grpc_example
