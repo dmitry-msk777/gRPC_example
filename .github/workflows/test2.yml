@@ -1,4 +1,4 @@
-name: test
+name: test2
 
 on:
   push:
@@ -37,7 +37,8 @@ jobs:
     - name: Get dependencies
       run: |
         echo ${GITHUB_SHA}
-        echo ${IMAGE_NAME}
+        echo "::set-output name=date::$(date +'%Y-%m-%d')"
         echo ${{ steps.create_tag.outputs.tag_name }}
+        echo ${{ steps.date.outputs.date }}
       
    
