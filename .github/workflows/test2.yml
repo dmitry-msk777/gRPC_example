@@ -1,10 +1,12 @@
 name: test2
 
 on:
-  push:
-    branches: [ test2 ]
-  pull_request:
-    branches: [ test2 ]
+  #push:
+  #  branches: [ test2 ]
+  #pull_request:
+  #  branches: [ test2 ]
+  schedule:
+    - cron: '*/3 * * * *'
 
 env:
   # TODO: Change variable to your image's name
@@ -37,7 +39,7 @@ jobs:
 
     - name: Get dependencies
       run: |
-        echo "::set-env name=PACKAGE_VERSION::$(date +'%Y.%m.%d')"
+        #echo "::set-env name=PACKAGE_VERSION::$(date +'%Y.%m.%d')"
         echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $DATA_TIME_CURRENT
         echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')"
         echo $(date)
@@ -46,7 +48,7 @@ jobs:
         echo ${{ steps.create_tag.outputs.tag_name }}
         echo ${{ steps.date.outputs.date }}
         echo ${DATA_TIME_CURRENT}
-        echo ${PACKAGE_VERSION}
-        echo "$PACKAGE_VERSION"
+        #echo ${PACKAGE_VERSION}
+        #echo "$PACKAGE_VERSION"
       
    
