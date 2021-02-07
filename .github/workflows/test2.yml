@@ -50,6 +50,7 @@ jobs:
         echo ${DATA_TIME_CURRENT}
         #echo ${PACKAGE_VERSION}
         #echo "$PACKAGE_VERSION"
+
         IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
         # Change all uppercase to lowercase
         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -63,6 +64,13 @@ jobs:
         echo VERSION=$VERSION
         echo docker tag = $IMAGE_NAME $IMAGE_ID:$VERSION
         echo docker push = $IMAGE_ID:$VERSION
+
         echo github.ref = ${{ github.ref }}
+         # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        echo VERSION = $VERSION
+        # Use Docker `latest` tag convention
+        [ "$VERSION" == "test2" ] && VERSION=latest
+         echo VERSION = $VERSION
       
    
